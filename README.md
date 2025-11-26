@@ -75,6 +75,24 @@ just build
 just --list
 ```
 
+### Debugging with VS Code
+
+The project is pre-configured for VS Code debugging. This works in both Codespaces and local VS Code:
+
+#### Quick Start
+1. Open the **Run and Debug** panel (`Cmd+Shift+D` or `Ctrl+Shift+D`)
+2. Select **Debug All Tests** from the dropdown
+3. Press **F5** to start debugging
+4. Use the debug toolbar to step through code
+
+#### Debug Tips
+- Click left of line numbers to set/remove breakpoints
+- Hover over variables to see their values
+- Use the Debug Console to evaluate expressions
+- Step Over (F10), Step Into (F11), Continue (F5)
+
+Or run `just debug` for instructions.
+
 ### Without Just
 
 If you prefer to use CMake directly:

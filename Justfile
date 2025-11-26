@@ -32,11 +32,14 @@ rebuild: clean build
 run-tests: build
     ./build/FilterManagerTests
 
-# Format code (if clang-format is available)
-format:
-    @if command -v clang-format >/dev/null 2>&1; then \
-        find include src tests -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
-        echo "Code formatted successfully"; \
-    else \
-        echo "clang-format not found, skipping formatting"; \
-    fi
+# Open VS Code debugger (use F5 or Debug menu in VS Code)
+debug: build
+    @echo "VS Code debugger configured!"
+    @echo ""
+    @echo "To debug in VS Code:"
+    @echo "  1. Open the Run and Debug panel (Cmd+Shift+D / Ctrl+Shift+D)"
+    @echo "  2. Select a debug configuration from the dropdown:"
+    @echo "     • Debug All Tests"
+    @echo "  3. Set breakpoints in the code (click left of line numbers)"
+    @echo "  4. Press F5 to start debugging"
+    @echo ""
