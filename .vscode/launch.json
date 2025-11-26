@@ -2,22 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(macOS) Debug All Tests",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/FilterManagerTests",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "build",
-            "osx": {
-                "MIMode": "lldb"
-            }
-        },
-        {
             "name": "(Linux/Codespaces) Debug All Tests",
             "type": "cppdbg",
             "request": "launch",
@@ -37,6 +21,22 @@
             ],
             "preLaunchTask": "build",
             "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "(macOS) Debug All Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/FilterManagerTests",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "build",
+            "osx": {
+                "MIMode": "lldb"
+            }
         }
     ]
 }
