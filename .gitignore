@@ -8,7 +8,6 @@ cmake-build-*/
 *.dll
 
 # IDE files
-.vscode/
 .idea/
 *.swp
 *.swo

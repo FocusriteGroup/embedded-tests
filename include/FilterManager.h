@@ -27,8 +27,7 @@ public:
      * @brief Set the sample rate and update filter state accordingly
      * 
      * The filter will be automatically enabled or disabled based on the
-     * sample rate. The specification states that the filter should only
-     * be active at sample rates below 192kHz.
+     * sample rate.
      * 
      * @param sampleRate The new sample rate in Hz
      */
@@ -37,8 +36,6 @@ public:
     /**
      * @brief Explicitly enable or disable the filter
      * 
-     * This allows manual control of the filter state, overriding the
-     * sample rate-based automatic behavior.
      * 
      * @param enabled true to enable the filter, false to disable
      */
@@ -70,4 +67,6 @@ private:
     IDspInterface& m_dsp;
     uint32_t m_sampleRate;
     bool m_filterEnabled;
+    bool m_userRequestedState;
+    bool m_shouldFilterBeEnabled;
 };
