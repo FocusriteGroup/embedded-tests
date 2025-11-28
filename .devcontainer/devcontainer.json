@@ -10,15 +10,6 @@
     },
     "postStartCommand": "curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo bash -s -- --to /usr/local/bin",
     "customizations": {
-        "codespaces": {
-            "repositories": {
-                "FocusriteGroup/audio-filter-interview": {
-                    "permissions": {
-                        "contents": "read"
-                    }
-                }
-            }
-        },
         "vscode": {
             "extensions": [
                 "ms-vscode.cpptools",
