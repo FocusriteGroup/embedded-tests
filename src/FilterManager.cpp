@@ -14,6 +14,8 @@ void FilterManager::setSampleRate(uint32_t sampleRate)
 {
     m_sampleRate = sampleRate;
     bool m_previousShouldFilterBeEnabled = m_shouldFilterBeEnabled;
+
+    // Make sure filter is disabled at 96kHz
     m_shouldFilterBeEnabled = (m_sampleRate <= 192000);
     
     if (m_shouldFilterBeEnabled != m_previousShouldFilterBeEnabled) 
