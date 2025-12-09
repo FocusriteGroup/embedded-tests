@@ -5,18 +5,18 @@
 #include "mocks/MockHardwareInterface.h"
 #include "mocks/MockDspInterface.h"
 
-TEST_CASE("FilterManager initialization", "[FilterManager]") 
+TEST_CASE("FilterManager initialisation", "[FilterManager]") 
 {
     MockHardwareInterface hardware;
     MockDspInterface dsp;
     FilterManager manager(hardware, dsp);
 
-    SECTION("starts with default sample rate") 
+    SECTION("filter initial sample rate is 48kHz") 
     {
         REQUIRE(manager.getSampleRate() == 48000);
     }
 
-    SECTION("starts with filter inactive") 
+    SECTION("filter is initially not active") 
     {
         REQUIRE_FALSE(manager.isFilterActive());
     }
