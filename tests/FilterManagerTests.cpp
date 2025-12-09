@@ -5,18 +5,18 @@
 #include "mocks/MockHardwareInterface.h"
 #include "mocks/MockDspInterface.h"
 
-TEST_CASE("FilterManager initialization", "[FilterManager]") 
+TEST_CASE("FilterManager initialisation", "[FilterManager]") 
 {
     MockHardwareInterface hardware;
     MockDspInterface dsp;
     FilterManager manager(hardware, dsp);
 
-    SECTION("starts with default sample rate") 
+    SECTION("filter initial sample rate is 48kHz") 
     {
         REQUIRE(manager.getSampleRate() == 48000);
     }
 
-    SECTION("starts with filter inactive") 
+    SECTION("filter is initially not active") 
     {
         REQUIRE_FALSE(manager.isFilterActive());
     }
@@ -30,42 +30,42 @@ TEST_CASE("FilterManager sample rate behavior", "[FilterManager]")
 
     manager.setFilterEnabled(true);
 
-    SECTION("enables filter at 44.1kHz") 
+    SECTION("44.1kHz sample rate enables filter") 
     {
         manager.setSampleRate(44100);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter at 48kHz") 
+    SECTION("48kHz sample rate enables filter")  
     {
         manager.setSampleRate(48000);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter at 96kHz") 
+    SECTION("96kHz sample rate enables filter")  
     {
         manager.setSampleRate(96000);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("disables filter at 192kHz") 
+    SECTION("192kHz sample rate disables filter") 
     {
         manager.setSampleRate(192000);
         REQUIRE_FALSE(manager.isFilterActive());
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("disables filter at 384kHz") 
+    SECTION("384kHz sample rate disables filter") 
     {
         manager.setSampleRate(384000);
         REQUIRE_FALSE(manager.isFilterActive());
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter when returning to 48kHz") 
+    SECTION("48kHz sample rate enables filter after being disabled") 
     {
         manager.setSampleRate(48000);
         REQUIRE(manager.isFilterActive());
@@ -79,7 +79,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
     MockDspInterface dsp;
     FilterManager manager(hardware, dsp);
 
-    SECTION("enables filter when setFilterEnabled is called") 
+    SECTION("filter enables when setFilterEnabled is called") 
     {
         manager.setSampleRate(48000);
         manager.setFilterEnabled(true);
@@ -87,7 +87,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("disabled filter when setFilterEnabled is called with false") 
+    SECTION("filter disables when setFilterEnabled is called with false") 
     {
         manager.setSampleRate(48000);
         manager.setFilterEnabled(false);
@@ -95,7 +95,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("doesn't enable filter if sample rate is too high") 
+    SECTION("filter does not enable if sample rate is too high") 
     {
         manager.setSampleRate(192000);
         manager.setFilterEnabled(true);
@@ -103,7 +103,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter if valid sample rate is set") 
+    SECTION("filter does enable if valid sample rate is set") 
     {
         manager.setSampleRate(192000);
         manager.setFilterEnabled(true);
