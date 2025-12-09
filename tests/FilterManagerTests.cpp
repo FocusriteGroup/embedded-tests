@@ -79,7 +79,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
     MockDspInterface dsp;
     FilterManager manager(hardware, dsp);
 
-    SECTION("enables filter when setFilterEnabled is called") 
+    SECTION("filter enables when setFilterEnabled is called") 
     {
         manager.setSampleRate(48000);
         manager.setFilterEnabled(true);
@@ -87,7 +87,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("disabled filter when setFilterEnabled is called with false") 
+    SECTION("filter disables when setFilterEnabled is called with false") 
     {
         manager.setSampleRate(48000);
         manager.setFilterEnabled(false);
@@ -95,7 +95,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("doesn't enable filter if sample rate is too high") 
+    SECTION("filter does not enable if sample rate is too high") 
     {
         manager.setSampleRate(192000);
         manager.setFilterEnabled(true);
@@ -103,7 +103,7 @@ TEST_CASE("FilterManager enable behavior", "[FilterManager]")
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter if valid sample rate is set") 
+    SECTION("filter does enable if valid sample rate is set") 
     {
         manager.setSampleRate(192000);
         manager.setFilterEnabled(true);
