@@ -30,42 +30,42 @@ TEST_CASE("FilterManager sample rate behavior", "[FilterManager]")
 
     manager.setFilterEnabled(true);
 
-    SECTION("enables filter at 44.1kHz") 
+    SECTION("44.1kHz sample rate enables filter") 
     {
         manager.setSampleRate(44100);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter at 48kHz") 
+    SECTION("48kHz sample rate enables filter")  
     {
         manager.setSampleRate(48000);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter at 96kHz") 
+    SECTION("96kHz sample rate enables filter")  
     {
         manager.setSampleRate(96000);
         REQUIRE(manager.isFilterActive());
         REQUIRE(hardware.isFilterEnabled());
     }
 
-    SECTION("disables filter at 192kHz") 
+    SECTION("192kHz sample rate disables filter") 
     {
         manager.setSampleRate(192000);
         REQUIRE_FALSE(manager.isFilterActive());
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("disables filter at 384kHz") 
+    SECTION("384kHz sample rate disables filter") 
     {
         manager.setSampleRate(384000);
         REQUIRE_FALSE(manager.isFilterActive());
         REQUIRE_FALSE(hardware.isFilterEnabled());
     }
 
-    SECTION("enables filter when returning to 48kHz") 
+    SECTION("48kHz sample rate enables filter after being disabled") 
     {
         manager.setSampleRate(48000);
         REQUIRE(manager.isFilterActive());
